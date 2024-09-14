@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CuaHangNongSan.Models.LatestProduct>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/LayoutPage.cshtml";
+}
+<head>
+    <link href="~/css/showlistproducts.css" rel='stylesheet' type='text/css' media="all">
+</head>
+
+<section class="products" id="products">
+    <h1 class="heading"><span>Kết quả tìm kiếm</span></h1>
+
+    <div class="box-container">
+        @if (Model != null && Model.Any())
+        {
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <div class="box">
+                        <div class="image">
+                            <img src="~/images/@item.Hinh" />
+                        </div>
+                        <div class="content">
+                            <h3>@Html.DisplayFor(modelItem => item.Tensp)</h3>
+                            <div class="price">@string.Format("{0:0,0}", item.Gia)</div>
+                        </div>
+                        <div class="icons">
+                            <a href="#" class="fa fa-heart"></a>
+                            <a href="#" class="cart-btn">Add to cart</a>
+                            <a href="#" class="fas fa-share"></a>
+                        </div>
+                    </div>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Không tìm thấy kết quả nào.</p>
+        }
+    </div>
+</section>

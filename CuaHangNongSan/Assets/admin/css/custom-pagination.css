@@ -1,0 +1,26 @@
+﻿.pagination {
+    display: inline-block;
+}
+
+/* Định dạng các nút trang */
+.page-item {
+    list-style: none;
+    display: inline;
+    margin-right: 5px;
+}
+
+/* Định dạng liên kết trang */
+.page-link {
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    /* Định dạng liên kết trang khi được chọn */
+    .page-link.current {
+        background-color: #333;
+    }

@@ -1,0 +1,55 @@
+﻿
+
+@model CuaHangNongSan.Models.User
+
+@{
+    ViewBag.Title = "Register";
+    //Layout = "~/Views/Shared/_Layout.cshtml"; // Thay đổi đường dẫn tới layout của bạn
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Responsive Registration Form | CodingLab</title>
+    <link rel="stylesheet" href="~/css/styleRe.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .text-danger {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Login</div>
+        <div class="content">
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <form>
+                    <div class="user-details">
+                        <div class="input-box">
+                            <label class="control-label">Tên người dùng</label>
+                            @Html.TextBoxFor(model => model.userName, new { @class = "form-control", placeholder = "Enter username" })
+                            @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="input-box">
+                            <label class="control-label">Password</label>
+                            @Html.PasswordFor(model => model.pass, new { @class = "form-control", placeholder = "Enter password" })
+                            @Html.ValidationMessageFor(model => model.pass, "", new { @class = "text-danger" })
+                        </div>
+                       
+                    <div class="button">
+                        <input type="submit" value="Login" class="btn btn-primary btn-block">
+                    </div>
+                </form>
+
+            }
+
+        </div>
+    </div>
+</body>
+</html>

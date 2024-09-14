@@ -1,0 +1,33 @@
+﻿
+@model CuaHangNongSan.Models.LatestProduct
+
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/LayoutPage.cshtml";
+}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="product-image">
+                    <img src="~/images/@Model.Hinh" class="img-fluid" alt="@Model.Tensp">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-details">
+                    <h2>@Model.Tensp</h2>
+                    <p class="price">@string.Format("{0:0,0} VND", Model.Gia)</p>
+                    <p class="description">@Model.Mota</p>
+                    <div class="action">
+                        @*<button class="btn btn-primary">Add to Cart</button>*@
+                        <button class="btn btn-primary" onclick="location.href='@Url.Action("AddToCart", "Home", new { productId = Model.Id, productName = Model.Tensp, price = Model.Gia, quantity = 1 })'">Add to Cart</button>
+
+                        <button class="btn btn-outline-secondary">Add to Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CuaHangNongSan.Models.Pok>
+
+@{
+    ViewBag.Title = "Danh Sách Sản Phẩm";
+}
+
+<h2>Danh Sách Sản Phẩm</h2>
+
+<table class="table">
+    <tr>
+        <th>Tên Sản Phẩm</th>
+        <th>Loại Sản Phẩm</th>
+        <th>Mô Tả</th>
+        <th>Giá</th>
+        <th>Hình Ảnh</th>
+    </tr>
+
+    @foreach (var pok in Model)
+    {
+        <tr>
+            <td>@pok.Id</td>
+            <td>@pok.Name</td>
+            <td>@pok.Types</td>
+            <td>@pok.Image</td>
+            
+        </tr>
+    }
+</table>

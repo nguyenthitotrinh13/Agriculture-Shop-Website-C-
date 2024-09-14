@@ -1,0 +1,49 @@
+﻿@model CuaHangNongSan.Models.LatestProduct
+
+@{
+    ViewBag.Title = "Delete Product";
+    var isAdmin = ViewBag.IsAdmin != null && ViewBag.IsAdmin;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (isAdmin)
+{
+    <h3>Bạn có chắc chắn muốn xóa không ?</h3>
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Tensp)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Tensp)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Mota)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Mota)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Gia)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Gia)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Cancel", "Index");
+        }
+    </div>
+}
+else
+{
+    < p > Only administrators can access this page.</ p >
+}

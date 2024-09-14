@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+@model CuaHangNongSan.Models.LatestProduct
+
+
+<p>Bạn có chắc chắn muốn xóa sản phẩm sau đây?</p>
+
+<div>
+    <h4>Product Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Tên sản phẩm:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tensp)
+        </dd>
+        <dt class="col-sm-2">
+            Hình ảnh:
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/images/@Model.Hinh" width="300px" height="300px" />
+        </dd>
+        <dt class="col-sm-2">
+            Giá:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Product", new { id = Model.Id, area = "Admin" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Xóa" class="btn btn-danger" /> |
+                @Html.ActionLink("Quay lại", "listProduct", "Home", new { area = "Admin" }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    }
+
+
+</div>

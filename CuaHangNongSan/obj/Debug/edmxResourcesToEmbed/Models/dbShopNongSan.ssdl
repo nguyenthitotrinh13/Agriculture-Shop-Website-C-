@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MuaBanNongSanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Area">
+    <Key>
+      <PropertyRef Name="area_id" />
+    </Key>
+    <Property Name="area_id" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="provinve_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="district_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ward_id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Category">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_District">
+    <Key>
+      <PropertyRef Name="district_id" />
+    </Key>
+    <Property Name="district_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="province_id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="order_date" Type="datetime" Nullable="false" />
+    <Property Name="total_amount" Type="int" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_OrderDetail">
+    <Key>
+      <PropertyRef Name="orderDetail_id" />
+    </Key>
+    <Property Name="orderDetail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="price_per_unit" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Products">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_id" Type="int" Nullable="false" />
+    <Property Name="product_name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="description" Type="ntext" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="150" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_Province">
+    <Key>
+      <PropertyRef Name="province_id" />
+    </Key>
+    <Property Name="province_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Receipt">
+    <Key>
+      <PropertyRef Name="receipt_id" />
+    </Key>
+    <Property Name="receipt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="warehouse_id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="supplier_id" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="receiver_date" Type="datetime" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_Shipment">
+    <Key>
+      <PropertyRef Name="shipment_id" />
+    </Key>
+    <Property Name="shipment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="warehouse_id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="shipped_date" Type="datetime" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_Supplier">
+    <Key>
+      <PropertyRef Name="supplier_id" />
+    </Key>
+    <Property Name="supplier_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="address_details" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="phoneNumber" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="tbl_User">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="address_detail" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="25" />
+    <Property Name="phone_number" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="role" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Ward">
+    <Key>
+      <PropertyRef Name="ward_id" />
+    </Key>
+    <Property Name="ward_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="district_id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Warehouse">
+    <Key>
+      <PropertyRef Name="warehouse_id" />
+    </Key>
+    <Property Name="warehouse_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="address_details" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__tbl_Area__distri__5AEE82B9">
+    <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="1" />
+    <End Role="tbl_Area" Type="Self.tbl_Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_District">
+        <PropertyRef Name="district_id" />
+      </Principal>
+      <Dependent Role="tbl_Area">
+        <PropertyRef Name="district_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Area__provin__59FA5E80">
+    <End Role="tbl_Province" Type="Self.tbl_Province" Multiplicity="1" />
+    <End Role="tbl_Area" Type="Self.tbl_Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Province">
+        <PropertyRef Name="province_id" />
+      </Principal>
+      <Dependent Role="tbl_Area">
+        <PropertyRef Name="provinve_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Area__ward_i__5BE2A6F2">
+    <End Role="tbl_Ward" Type="Self.tbl_Ward" Multiplicity="1" />
+    <End Role="tbl_Area" Type="Self.tbl_Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Ward">
+        <PropertyRef Name="ward_id" />
+      </Principal>
+      <Dependent Role="tbl_Area">
+        <PropertyRef Name="ward_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Distr__provi__5CD6CB2B">
+    <End Role="tbl_Province" Type="Self.tbl_Province" Multiplicity="1" />
+    <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Province">
+        <PropertyRef Name="province_id" />
+      </Principal>
+      <Dependent Role="tbl_District">
+        <PropertyRef Name="province_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Order__order__656C112C">
+    <End Role="tbl_Order" Type="Self.tbl_Order" Multiplicity="1" />
+    <End Role="tbl_OrderDetail" Type="Self.tbl_OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Order">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="tbl_OrderDetail">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Order__produ__66603565">
+    <End Role="tbl_Products" Type="Self.tbl_Products" Multiplicity="1" />
+    <End Role="tbl_OrderDetail" Type="Self.tbl_OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Products">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="tbl_OrderDetail">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Order__user___6383C8BA">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+    <End Role="tbl_Order" Type="Self.tbl_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="tbl_Order">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Produ__categ__6477ECF3">
+    <End Role="tbl_Category" Type="Self.tbl_Category" Multiplicity="1" />
+    <End Role="tbl_Products" Type="Self.tbl_Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Category">
+        <PropertyRef Name="category_id" />
+      </Principal>
+      <Dependent Role="tbl_Products">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Recei__produ__5FB337D6">
+    <End Role="tbl_Products" Type="Self.tbl_Products" Multiplicity="1" />
+    <End Role="tbl_Receipt" Type="Self.tbl_Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Products">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="tbl_Receipt">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Recei__suppl__5EBF139D">
+    <End Role="tbl_Supplier" Type="Self.tbl_Supplier" Multiplicity="1" />
+    <End Role="tbl_Receipt" Type="Self.tbl_Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Supplier">
+        <PropertyRef Name="supplier_id" />
+      </Principal>
+      <Dependent Role="tbl_Receipt">
+        <PropertyRef Name="supplier_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Recei__wareh__60A75C0F">
+    <End Role="tbl_Warehouse" Type="Self.tbl_Warehouse" Multiplicity="1" />
+    <End Role="tbl_Receipt" Type="Self.tbl_Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Warehouse">
+        <PropertyRef Name="warehouse_id" />
+      </Principal>
+      <Dependent Role="tbl_Receipt">
+        <PropertyRef Name="warehouse_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Shipm__produ__628FA481">
+    <End Role="tbl_Products" Type="Self.tbl_Products" Multiplicity="1" />
+    <End Role="tbl_Shipment" Type="Self.tbl_Shipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Products">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="tbl_Shipment">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Shipm__wareh__619B8048">
+    <End Role="tbl_Warehouse" Type="Self.tbl_Warehouse" Multiplicity="1" />
+    <End Role="tbl_Shipment" Type="Self.tbl_Shipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Warehouse">
+        <PropertyRef Name="warehouse_id" />
+      </Principal>
+      <Dependent Role="tbl_Shipment">
+        <PropertyRef Name="warehouse_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Ward__distri__5DCAEF64">
+    <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="1" />
+    <End Role="tbl_Ward" Type="Self.tbl_Ward" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_District">
+        <PropertyRef Name="district_id" />
+      </Principal>
+      <Dependent Role="tbl_Ward">
+        <PropertyRef Name="district_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MuaBanNongSanModelStoreContainer">
+    <EntitySet Name="tbl_Area" EntityType="Self.tbl_Area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Category" EntityType="Self.tbl_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_District" EntityType="Self.tbl_District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Order" EntityType="Self.tbl_Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_OrderDetail" EntityType="Self.tbl_OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Products" EntityType="Self.tbl_Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Province" EntityType="Self.tbl_Province" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Receipt" EntityType="Self.tbl_Receipt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Shipment" EntityType="Self.tbl_Shipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Supplier" EntityType="Self.tbl_Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Ward" EntityType="Self.tbl_Ward" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Warehouse" EntityType="Self.tbl_Warehouse" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tbl_Area__distri__5AEE82B9" Association="Self.FK__tbl_Area__distri__5AEE82B9">
+      <End Role="tbl_District" EntitySet="tbl_District" />
+      <End Role="tbl_Area" EntitySet="tbl_Area" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Area__provin__59FA5E80" Association="Self.FK__tbl_Area__provin__59FA5E80">
+      <End Role="tbl_Province" EntitySet="tbl_Province" />
+      <End Role="tbl_Area" EntitySet="tbl_Area" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Area__ward_i__5BE2A6F2" Association="Self.FK__tbl_Area__ward_i__5BE2A6F2">
+      <End Role="tbl_Ward" EntitySet="tbl_Ward" />
+      <End Role="tbl_Area" EntitySet="tbl_Area" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Distr__provi__5CD6CB2B" Association="Self.FK__tbl_Distr__provi__5CD6CB2B">
+      <End Role="tbl_Province" EntitySet="tbl_Province" />
+      <End Role="tbl_District" EntitySet="tbl_District" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Order__order__656C112C" Association="Self.FK__tbl_Order__order__656C112C">
+      <End Role="tbl_Order" EntitySet="tbl_Order" />
+      <End Role="tbl_OrderDetail" EntitySet="tbl_OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Order__produ__66603565" Association="Self.FK__tbl_Order__produ__66603565">
+      <End Role="tbl_Products" EntitySet="tbl_Products" />
+      <End Role="tbl_OrderDetail" EntitySet="tbl_OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Order__user___6383C8BA" Association="Self.FK__tbl_Order__user___6383C8BA">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Order" EntitySet="tbl_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Produ__categ__6477ECF3" Association="Self.FK__tbl_Produ__categ__6477ECF3">
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+      <End Role="tbl_Products" EntitySet="tbl_Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Recei__produ__5FB337D6" Association="Self.FK__tbl_Recei__produ__5FB337D6">
+      <End Role="tbl_Products" EntitySet="tbl_Products" />
+      <End Role="tbl_Receipt" EntitySet="tbl_Receipt" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Recei__suppl__5EBF139D" Association="Self.FK__tbl_Recei__suppl__5EBF139D">
+      <End Role="tbl_Supplier" EntitySet="tbl_Supplier" />
+      <End Role="tbl_Receipt" EntitySet="tbl_Receipt" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Recei__wareh__60A75C0F" Association="Self.FK__tbl_Recei__wareh__60A75C0F">
+      <End Role="tbl_Warehouse" EntitySet="tbl_Warehouse" />
+      <End Role="tbl_Receipt" EntitySet="tbl_Receipt" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Shipm__produ__628FA481" Association="Self.FK__tbl_Shipm__produ__628FA481">
+      <End Role="tbl_Products" EntitySet="tbl_Products" />
+      <End Role="tbl_Shipment" EntitySet="tbl_Shipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Shipm__wareh__619B8048" Association="Self.FK__tbl_Shipm__wareh__619B8048">
+      <End Role="tbl_Warehouse" EntitySet="tbl_Warehouse" />
+      <End Role="tbl_Shipment" EntitySet="tbl_Shipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Ward__distri__5DCAEF64" Association="Self.FK__tbl_Ward__distri__5DCAEF64">
+      <End Role="tbl_District" EntitySet="tbl_District" />
+      <End Role="tbl_Ward" EntitySet="tbl_Ward" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "user";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+}
+@model List<CuaHangNongSan.Models.User>
+
+<div class="card">
+    <div class="card-body">
+        <h3>Quản lý đăng nhập</h3>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+<table class="table table-bordered">
+    <tr>
+        <th>ID User</th>
+        <th>Tên đăng nhập</th>
+        <th>Mật khẩu</th>
+        <th>Tên người dùng</th>
+        <th>Địa chỉ</th>
+        <th>Email</th>
+        <th>Số điện thoại</th>
+        <th>Vai trò</th>
+        <th>Hiệu chỉnh</th>
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.userName</td>
+            <td>@item.pass</td>
+            <td>@item.name</td>
+            <td>@item.address</td>
+            <td>@item.email</td>
+            <td>@item.phoneNumber</td>
+            <td>@item.role</td>
+            <td>
+                @Html.ActionLink("Sửa", "EditUser", "User", new { id = item.id, area = "Admin" }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Xóa", "DeleteUser", "User", new { id = item.id, area = "Admin" }, new { @class = "btn btn-danger btn-sm", data_confirm = "Bạn có chắc chắn muốn xóa?" })
+            </td>
+        </tr>
+    }
+</table>

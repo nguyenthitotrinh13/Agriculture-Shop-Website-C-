@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "DeleteConfirmed";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>DeleteConfirmed</h2>
+
+<p>Sản phẩm đã được xóa thành công.</p>
+
+<div>
+    @Html.ActionLink("Quay lại danh sách sản phẩm", "listProduct", "Home", null, new { @class = "btn btn-primary" })
+</div>

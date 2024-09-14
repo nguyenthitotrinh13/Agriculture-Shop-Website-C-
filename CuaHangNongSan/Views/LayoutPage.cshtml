@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Organic Store Agriculture Category bootstrap Responsive web Template| Home :: w3layouts</title>
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Organic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+         Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="~/css/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="~/css/style.css" rel='stylesheet' type='text/css' media="all">
+
+    <!--//stylesheets-->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    @*<script src="~/js/scoll.js"></script>*@
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+
+        window.addEventListener('scroll', function () {
+            var header = document.querySelector('.headder-top');
+            if (window.scrollY > 0) { // Nếu trang được cuộn xuống
+                header.classList.add('scrolling'); // Thêm lớp 'scrolling' vào phần header
+            } else {
+                header.classList.remove('scrolling'); // Loại bỏ lớp 'scrolling' khỏi phần header
+            }
+        });
+
+    </script>
+
+</head>
+<body>
+    <!-- //banner -->
+    @*<div class="banner-left-side" id="home">*@
+        <!-- header -->
+        <div class="headder-top">
+            <!-- nav -->
+            <nav>
+                <div id="logo">
+                    <h1>
+                        <a href="@Url.Action("Index", "Home")">OS</a>
+                    </h1>
+                </div>
+                <div class="sub-headder position-relative">
+                    <h6>
+                        <a href="@Url.Action("Index", "Home")">
+                            Organic
+                            <br>Store
+                        </a>
+                    </h6>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu mt-2">
+
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Services", "Services", "Home", null, new { @class = "nav-link" })
+                    </li>
+
+                    <li>
+                        @Html.ActionLink("Gallery", "Gallery", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    @*<li>
+                        @Html.ActionLink("Blog", "Blog", "Home", null, new { @class = "nav-link" })
+                    </li>*@
+                    <li>
+                        @Html.ActionLink("Contact Us", "ContactUs", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    
+                <li class="nav-item">
+                    <form action="@Url.Action("Search", "Home")" method="get">
+                        <div class="input-group rounded">
+                            <input type="search" name="keyword" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                            <button class="btn btn-outline-primary" type="submit" id="button-addon">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Cart")">
+                        <i class="fa fa-shopping-cart"></i> Cart
+                    </a>
+                </li>
+                <li>
+                    @if (Session["Username"] != null)
+                    {
+                        @*<p>Xin chào, @Session["Username"]!</p>*@
+                        <a href="@Url.Action("Logout", "Account")">Đăng xuất</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Login", "Account")">Đăng nhập</a>
+                    }
+                </li>
+
+                </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+        <!-- //header -->
+     </div>  
+    <!-- //header -->
+        
+
+        @RenderBody()
+    </div>
+    <!-- footer -->
+    <section class="footer-w3layouts-bottem py-lg-4 py-md-3 py-sm-3 py-3">
+        <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+            <div class="row ">
+                <div class="footer-bottom-info col-lg-4 col-md-4 ">
+                    <h4 class="pb-lg-4 pb-md-3 pb-3 ">Address</h4>
+                    <div class="bottom-para ">
+                        <div class="footer-office-hour">
+                            <ul>
+                                <li class="mb-2">
+                                    <h6>Address</h6>
+                                </li>
+                                <li>
+                                    <p>
+                                        Melbourne,south Brisbane,
+                                        <br>QLD 4101,Aurstralia.
+                                    </p>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li class="my-2">
+                                    <h6>Phone</h6>
+                                </li>
+                                <li>
+                                    <p>+ 1 (234) 567 8901</p>
+                                </li>
+                                <li class="my-2">
+                                    <h6>Email</h6>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a href="mailto:info@example.com">info@example.com</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom-info col-lg-4 col-md-4 ">
+                    <h4 class="pb-lg-4 pb-md-3 pb-3 ">Connect With Us</h4>
+                    <div class="footer-office-hour">
+                        <ul>
+                            <li class="facebook">
+                                <a href="#">
+                                    <span class="fa fa-facebook"></span>
+                                </a>
+                            </li>
+                            <li class="twitter">
+                                <a href="#">
+                                    <span class="fa fa-twitter"></span>
+                                </a>
+                            </li>
+                            <li class="rss">
+                                <a href="#">
+                                    <span class="fa fa-rss"></span>
+                                </a>
+                            </li>
+                            </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom-info col-lg-4 col-md-4 ">
+                    <h4 class="pb-lg-4 pb-md-3 pb-3 ">NewsLetter</h4>
+                    <div class="newsletter">
+                        <form action="#" method="post" class="d-flex">
+                            <input type="email" name="Your Email" class="form-control" placeholder="Your Email" required="">
+                            <button class="btn1">
+                                <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                            </button>
+                        </form>
+                    </div>
+                    @*<div class="footer-office-hour mt-3">
+                        <p>vehicula velit sagittis vehicula. Duis posuere ex in mollis iaculis. Suspendisse tincidunt velit sagittis vehicula</p>
+                    </div>*@
+                </div>
+            </div>
+            <!-- move icon -->
+            <div class="text-center mt-lg-5 mt-md-4 mt-3">
+                <a href="#home" class="move-top text-center mt-3">
+                    <span class="fa fa-arrow-up" aria-hidden="true"></span>
+                </a>
+            </div>
+            <!--//move icon -->
+        </div>
+    </section>
+    <!--footer-copy-right -->
+    <footer class="bottem-wthree-footer text-center py-md-4 py-3">
+        <p>
+            PT Organic Store.
+        </p>
+    </footer>
+    <!--//footer-copy-right -->
+</body>
+</html>

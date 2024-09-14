@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/LayoutPage.cshtml";
+}
+
+@model IEnumerable<CuaHangNongSan.Models.CartItem>
+<div class="px-4 px-lg-0">
+    <div class="container text-white py-5 text-center">
+        @*<h1 class="display-4">Giỏ hàng Bootstrap 4</h1>*@
+        @*<p class="lead mb-0">Xây dựng trang giỏ hàng hoàn chỉnh sử dụng Bootstrap 4.</p>
+        <p class="lead">Mẫu bởi <a href="https://bootstrapious.com/snippets" class="text-white font-italic"><u>Bootstrapious</u></a></p>*@
+    </div>
+
+    <div class="pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="p-2 px-3 text-uppercase">Sản phẩm</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Giá</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Số lượng</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Xóa</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="border-0 align-middle">
+                                            <div class="p-2">
+                                                <img src="@Url.Content("~/images/" + item.Image)" alt="@item.ProductName" width="70" class="img-fluid rounded shadow-sm">
+                                                <div class="ml-3 d-inline-block align-middle">
+                                                    <h5 class="mb-0">
+                                                        <a href="#" class="text-dark d-inline-block align-middle">@item.ProductName</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        @*<td class="border-0 align-middle"><strong>@item.Price.ToString("C")</strong></td>*@
+                                        <td class="border-0 align-middle"><strong>@item.Price.ToString("C", new System.Globalization.CultureInfo("vi-VN"))</strong></td>
+
+                                        <td class="border-0 align-middle"><strong>@item.Quantity</strong></td>
+                                        <td class="border-0 align-middle">
+                                            <a href="@Url.Action("RemoveFromCart", "Cart", new { productId = item.ProductId })" class="text-dark">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row py-5 p-4 bg-white rounded shadow-sm">
+                <div class="col-lg-6">
+                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Mã giảm giá</div>
+                    <div class="p-4">
+                        <p class="font-italic mb-4">Nếu bạn có mã giảm giá, hãy nhập vào ô bên dưới</p>
+                        <div class="input-group mb-4 border rounded-pill p-2">
+                            <input type="text" placeholder="Nhập mã giảm giá" aria-describedby="button-addon3" class="form-control border-0">
+                            <div class="input-group-append border-0">
+                                <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Áp dụng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Hướng dẫn cho người bán</div>
+                    <div class="p-4">
+                        <p class="font-italic mb-4">Nếu bạn có yêu cầu gì cho người bán, hãy để lại lời nhắn ở ô bên dưới</p>
+                        <textarea name="" cols="30" rows="2" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Tổng đơn hàng</div>
+                    <div class="p-4">
+                        <p class="font-italic mb-4">Phí vận chuyển và các chi phí bổ sung sẽ được tính dựa trên thông tin bạn nhập.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li class="d-flex justify-content-between py-3 border-bottom">
+                                <strong class="text-muted">Tổng tiền hàng </strong>
+                                @*<strong>@(Model.Sum(item => item.Price * item.Quantity).ToString("C"))</strong>*@
+                                <strong>@(Model.Sum(item => item.Price * item.Quantity).ToString("C0", new System.Globalization.CultureInfo("vi-VN")))</strong>
+                            </li>
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Phí vận chuyển</strong><strong>10.000</strong></li>
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Thuế</strong><strong>0.00</strong></li>
+                            <li class="d-flex justify-content-between py-3 border-bottom">
+                                <strong class="text-muted">Tổng cộng</strong>
+                                @*<h5 class="font-weight-bold">$@(Model.Sum(item => item.Price * item.Quantity) + 10).ToString("C")</h5>*@
+                                <h5 class="font-weight-bold">@((Model.Sum(item => item.Price * item.Quantity) + 10).ToString("C0", new System.Globalization.CultureInfo("vi-VN")))</h5>
+                            </li>
+                        </ul>
+                        @*<a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Tiến hành thanh toán</a>*@
+                        <a href="@Url.Action("Checkout", "Cart")" class="btn btn-dark rounded-pill py-2 btn-block">Mua hàng</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

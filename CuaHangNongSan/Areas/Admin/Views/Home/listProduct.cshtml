@@ -1,0 +1,103 @@
+﻿@using PagedList.Mvc
+@using PagedList
+@model IPagedList<CuaHangNongSan.Models.LatestProduct>
+
+@{
+    ViewBag.Title = "listProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <h3>Quản lý sản phẩm</h3>
+
+    </div>
+</div>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+@Html.ActionLink("Thêm sản phẩm", "Create", "Product", null, new { @class = "btn btn-primary mb-2" })
+<table class="table table-bordered">
+    <tr>
+        <th>ID Sản phẩm</th>
+        <th>Loại</th>
+        <th>Hình ảnh</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá</th>
+        <th>Hiệu chỉnh</th>
+
+    </tr>
+
+    @*@model List<CuaHangNongSan.Models.LatestProduct>*@
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Loai</td>
+            <td><img src="~/images/@item.Hinh" width="70px" ,height="70px" /></td>
+
+            <td>@item.Tensp</td>
+            <td>@item.Gia</td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", "Product", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Xóa", "Delete", "Product", new { id = item.Id }, new { @class = "btn btn-danger btn-sm", data_confirm = "Bạn có chắc chắn muốn xóa?" })
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="text-center pagination">
+    @if (Model.Count > 0)
+    {
+        @Html.PagedListPager((IPagedList<CuaHangNongSan.Models.LatestProduct>)Model, page => Url.Action("listProduct", new { page }),
+            new PagedListRenderOptions
+            {
+                Display = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                MaximumPageNumbersToDisplay = 5, // Số lượng nút trang hiển thị
+                LinkToFirstPageFormat = "<<",
+                LinkToPreviousPageFormat = "<",
+                LinkToNextPageFormat = ">",
+                LinkToLastPageFormat = ">>"
+            })
+    }
+</div>
+
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px; /* Khoảng cách với bảng */
+        white-space: nowrap; /* Đảm bảo các phần tử con không xuống dòng */
+    }
+
+        .pagination a {
+            color: black;
+            padding: 8px 12px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            display: inline-block; /* Hiển thị nút phân trang cùng hàng */
+            line-height: 1.6; /* Điều chỉnh độ cao của dòng để các nút không bị dính vào nhau */
+        }
+
+            .pagination a.active {
+                background-color: #007bff;
+                color: white;
+                border: 1px solid #007bff;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
+
